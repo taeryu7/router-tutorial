@@ -1,4 +1,82 @@
+// Switch
+import React from 'react';
+import { Switch, Route, Link } from 'react-router-dom';
+import About from './About';
+import Home from './Home';
+import Profiles from './Profiles';
+import HistorySample from './HistorySample';
 
+const App = () => {
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to="/">홈</Link>
+        </li>
+        <li>
+          <Link to="/about">소개</Link>
+        </li>
+        <li>
+          <Link to="/profiles">프로필 목록</Link>
+        </li>
+        <li>
+          <Link to="/history">예제</Link>
+        </li>
+      </ul>
+      <hr />
+      <Switch>
+        <Route path="/" exact={true} component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/profiles" component={Profiles} />
+        <Route path="/history" component={HistorySample} />
+        <Route
+          // path 를 따로 정의하지 않으면 모든 상황에 렌더링됨
+          render={({ location }) => (
+            <div>
+              <h2>이 페이지는 존재하지 않습니다:</h2>
+              <p>{location.pathname}</p>
+            </div>
+          )}
+        />
+      </Switch>
+    </div>
+  );
+};
+
+export default App;
+
+/*
+//서브라우트
+import React from 'react';
+import { Route, Link } from 'react-router-dom';
+import About from './About';
+import Home from './Home';
+import Profiles from './Profiles';
+
+const App = () => {
+  return (
+    <div>
+      <ul>
+        <li>
+          <Link to="/">홈</Link>
+        </li>
+        <li>
+          <Link to="/about">소개</Link>
+        </li>
+        <li>
+          <Link to="/profiles">프로필 목록</Link>
+        </li>
+      </ul>
+      <hr />
+      <Route path="/" exact={true} component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/profiles" component={Profiles} />
+    </div>
+  );
+};
+
+export default App;
+*/
 
 /*
 // URL Params
@@ -7,7 +85,7 @@ match 객체안에는 현재의 주소가 Route 컴포넌트에서 정한 규칙
 
 path 규칙에는 /profiles/:username 이라고 넣어주면,
 username 에 해당하는 값을 파라미터로 넣어주어서 Profile 컴포넌트에서 match props 를 통하여 전달받을 수 있게된다.
-*/
+
 import React from 'react';
 import { Route, Link } from 'react-router-dom';
 import About from './About';
@@ -32,8 +110,8 @@ const App = () => {
     </div>
   );
 };
-
 export default App;
+*/
 
 /*
 Link: 누르면 다른 주소로 이동시키기

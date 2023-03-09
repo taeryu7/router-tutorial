@@ -1,14 +1,10 @@
-
 //쿼리
 import React from 'react';
 import qs from 'qs';
 
 const About = ({ location }) => {
-  const query = qs.parse(location.search, {
-    ignoreQueryPrefix: true
-  });
+  const query = qs.parse(location.search.substr(1)); // substr 은 맨 앞의 "?" 문자열을 없애줍니다.
   const detail = query.detail === 'true'; // 쿼리의 파싱결과값은 문자열입니다.
-
   return (
     <div>
       <h1>소개</h1>
@@ -19,7 +15,6 @@ const About = ({ location }) => {
 };
 
 export default About;
-
 /*
 // 웹사이트의 소개를 보여주는 About 페이지
 import React from 'react';
