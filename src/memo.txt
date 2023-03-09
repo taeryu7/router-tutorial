@@ -37,3 +37,27 @@ Code Splitting → https://velog.io/@velopert/react-code-splitting
 자바스크립트가 실행될때까지 페이지가 비어있기 때문에,
 자바스크립트 파일이 아직 캐싱되지 않은 사용자는 아주 짧은 시간동안 흰 페이지가 나타날 수도 있다는 단점도 있다.
 ↑이는, 서버사이드 렌더링을 통하여 해결 할 수 있다.
+
+
+파라미터와 쿼리
+페이지 주소를 정의 할 때 유동적인 값을 전달 해야 할때도 있는데, 이는 파라미터와 쿼리로 나뉘어질 수 있다.
+이것을 사용하는것에 대하여 무조건 따라야 하는 규칙은 없지만, 일반적으로는 파라미터는 특정 id 나 이름을 가지고 조회를 할 때 사용하고, 
+쿼리의 경우엔 어떤 키워드를 검색하거나, 요청을 할 때 필요한 옵션을 전달 할 때 사용된다.
+
+Query
+쿼리는 라우트 컴포넌트에게 props 전달되는 location 객체에 있는 search 값에서 읽어올 수 있다.
+location 객체는 현재 앱이 갖고있는 주소에 대한 정보를 지니고있다.
+{
+  key: 'ac3df4', // not with HashHistory!
+  pathname: '/somewhere'
+  search: '?some=search-string',
+  hash: '#howdy',
+  state: {
+    [userDefined]: true
+  }
+}
+
+여기서 search 값을 확인해야하는데, 이 값은 문자열 형태로 되어있다.
+객체 형태로 변환하는건 우리가 직접 해주어야한다.
+이 작업은 qs 라는 라이브러리를 사용하여 쉽게 할 수 있다.
+QS 링크 → https://www.npmjs.com/package/qs
